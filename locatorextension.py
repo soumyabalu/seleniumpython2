@@ -13,7 +13,8 @@ driver.find_element(By.CSS_SELECTOR, "form div:nth-child(2) input").send_keys("a
 # navigating from parent to child path
 driver.find_element(By.CSS_SELECTOR, "#userPassword").send_keys("abc123")
 driver.find_element(By.CSS_SELECTOR, "#confirmPassword").send_keys("abc123")
-driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
+# driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
+driver.find_element(By.XPATH, "//button[text()='Save New Password']").click()  # xpath using text
 driver.find_element(By.XPATH, "(//a[@class='text-reset'])[1]").click()
 driver.find_element(By.XPATH, "//input[@type='email']").send_keys("abc@gmail.com")
 driver.find_element(By.XPATH, "//input[@type='password']").send_keys("abc123")
