@@ -7,7 +7,10 @@ driver.get("https://rahulshettyacademy.com/client")
 # driver.find_element(By.CSS_SELECTOR, ".forgot-password-link").click()
 # driver.find_element(By.LINK_TEXT, "Forgot password?").click()
 driver.find_element(By.PARTIAL_LINK_TEXT, "Forgot").click()
-driver.find_element(By.XPATH, "//form/div[1]/input").send_keys("abc@gmail.com") # travelling through parent to child pah
+# driver.find_element(By.XPATH, "//form/div[1]/input").send_keys("abc@gmail.com")  # using xpath travelling through
+# parent to child pah
+driver.find_element(By.CSS_SELECTOR, "form div:nth-child(2) input").send_keys("abc@gmail.com")  # using css selector
+# navigating from parent to child path
 driver.find_element(By.CSS_SELECTOR, "#userPassword").send_keys("abc123")
 driver.find_element(By.CSS_SELECTOR, "#confirmPassword").send_keys("abc123")
 driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
