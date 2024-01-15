@@ -8,13 +8,23 @@ driver = webdriver.Chrome()
 driver.get("https://rahulshettyacademy.com/AutomationPractice/")
 print(driver.find_element(By.XPATH, "//legend[text()='Radio Button Example']").text)
 buttons = driver.find_elements(By.CSS_SELECTOR, "input[name='radioButton']")
-for button in buttons:
-    if button.get_attribute("value") == "radio1":
-        button.click()
-        assert button.is_selected()
-        break
+
+
+def buttonClick(radio):
+    for button in buttons:
+        if button.get_attribute("value") == radio:
+            button.click()
+            assert button.is_selected()
+            break
+
+
+buttonClick("radio1")
+
 driver.find_element(By.XPATH, "//input[@id='autocomplete']").send_keys("ind")
 time.sleep(10)
+
+
+
 
 print(driver.find_element(By.XPATH, "//legend[text()='Suggession Class Example']").text)
 countries = driver.find_elements(By.CSS_SELECTOR, "li[class='ui-menu-item']")
@@ -46,5 +56,6 @@ time.sleep(10)
 print(driver.find_element(By.XPATH, "//legend[text()='Switch Window Example']").text)
 driver.find_element(By.XPATH, "//button[@id='openwindow']").click()
 time.sleep(10)
+
 
 
