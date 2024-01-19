@@ -20,9 +20,9 @@ def buttonClick(radio):
 
 buttonClick("radio1")
 
+print(driver.find_element(By.XPATH, "//legend[text()='Suggession Class Example']").text)
 driver.find_element(By.XPATH, "//input[@id='autocomplete']").send_keys("ind")
 time.sleep(10)
-print(driver.find_element(By.XPATH, "//legend[text()='Suggession Class Example']").text)
 countries = driver.find_elements(By.CSS_SELECTOR, "li[class='ui-menu-item']")
 print(len(countries))
 
@@ -35,8 +35,9 @@ def auto_sugesion(country_name):
 
 
 auto_sugesion("India")
-assert driver.find_element(By.XPATH, "//input[@id='autocomplete']").get_attribute("value") == "India"
+
 print(driver.find_element(By.XPATH, "//input[@id='autocomplete']").get_attribute("value"))
+assert driver.find_element(By.XPATH, "//input[@id='autocomplete']").get_attribute("value") == "India"
 
 time.sleep(10)
 
@@ -62,5 +63,25 @@ time.sleep(10)
 check_box("option3")
 
 print(driver.find_element(By.XPATH, "//legend[text()='Switch Window Example']").text)
-driver.find_element(By.XPATH, "//button[@id='openwindow']").click()
+print(driver.find_element(By.XPATH, "//legend[text()='Element Displayed Example']").text)
+assert driver.find_element(By.XPATH, "//input[@id='displayed-text']").is_displayed()
+time.sleep(10)
+driver.find_element(By.XPATH, "//input[@id='hide-textbox']").click()
+assert not driver.find_element(By.XPATH, "//input[@id='displayed-text']").is_displayed()
+time.sleep(10)
+driver.find_element(By.XPATH, "//input[@id='show-textbox']").click()
+assert driver.find_element(By.XPATH, "//input[@id='displayed-text']").is_displayed()   # used to check weather an
+# element is displayed in the wb page or not
+
+time.sleep(10)
+
+print(driver.find_element(By.XPATH, "//legend[text()='Switch To Alert Example']").text)
+
+
+def enter_value(name_enter):
+    driver.find_element(By.CSS_SELECTOR, "#name").send_keys(name_enter)
+    driver.find_element(By.XPATH, "//input[@value='Alert']").click()
+
+
+enter_value("Soumya")
 time.sleep(10)
