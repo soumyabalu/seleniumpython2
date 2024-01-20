@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+
 def get_driver():
     driver = webdriver.Chrome()
     return driver
@@ -32,3 +33,8 @@ def check_box(option, checkboxes):
 def enter_value(name_enter, driver):
     driver.find_element(By.CSS_SELECTOR, "#name").send_keys(name_enter)
 
+
+def product_select(products):
+    for product in products:
+        product.find_element(By.XPATH, "//div[3]//button[text()='ADD TO CART']").click()
+        # break    # if we add break after the iteration it will add only one product to cart
