@@ -1,8 +1,8 @@
 import time
 
-from selenium import webdriver
+import common
 from selenium.webdriver.common.by import By
-driver = webdriver.Chrome()
+driver = common.get_driver()
 driver.get("https://rahulshettyacademy.com/client")
 # driver.find_element(By.CSS_SELECTOR, ".forgot-password-link").click()
 # driver.find_element(By.LINK_TEXT, "Forgot password?").click()

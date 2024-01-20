@@ -1,24 +1,15 @@
 import time
+import common
 
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
-driver = webdriver.Chrome()
+driver = common.get_driver()
 driver.get("https://rahulshettyacademy.com/AutomationPractice/")
 print(driver.find_element(By.XPATH, "//legend[text()='Radio Button Example']").text)
 buttons = driver.find_elements(By.CSS_SELECTOR, "input[name='radioButton']")
 
-
-def buttonClick(radio):
-    for button in buttons:
-        if button.get_attribute("value") == radio:
-            button.click()
-            assert button.is_selected()
-            break
-
-
-buttonClick("radio1")
+common.buttonClick("radio1", buttons)
 
 print(driver.find_element(By.XPATH, "//legend[text()='Suggession Class Example']").text)
 driver.find_element(By.XPATH, "//input[@id='autocomplete']").send_keys("ind")
@@ -26,15 +17,7 @@ time.sleep(10)
 countries = driver.find_elements(By.CSS_SELECTOR, "li[class='ui-menu-item']")
 print(len(countries))
 
-
-def auto_sugesion(country_name):
-    for country in countries:
-        if country.text == country_name:
-            country.click()
-            break
-
-
-auto_sugesion("India")
+common.auto_sugesion("India", countries)
 
 print(driver.find_element(By.XPATH, "//input[@id='autocomplete']").get_attribute("value"))
 assert driver.find_element(By.XPATH, "//input[@id='autocomplete']").get_attribute("value") == "India"
@@ -70,7 +53,7 @@ driver.find_element(By.XPATH, "//input[@id='hide-textbox']").click()
 assert not driver.find_element(By.XPATH, "//input[@id='displayed-text']").is_displayed()
 time.sleep(10)
 driver.find_element(By.XPATH, "//input[@id='show-textbox']").click()
-assert driver.find_element(By.XPATH, "//input[@id='displayed-text']").is_displayed()   # used to check weather an
+assert driver.find_element(By.XPATH, "//input[@id='displayed-text']").is_displayed()  # used to check weather an
 # element is displayed in the wb page or not
 
 time.sleep(10)

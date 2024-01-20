@@ -1,14 +1,13 @@
 import time
-
-from selenium import webdriver
-# from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-
+import common
+# from selenium.webdriver.chrome.service import Service
 # service_obj = Service("/Users/soumyalakshmi/tools/chromedriver")
 
 # driver = webdriver.Chrome(service=service_obj)
-driver = webdriver.Chrome()
+driver = common.get_driver()
 driver.get("https://rahulshettyacademy.com/AutomationPractice/")
+
 print(driver.find_element(By.XPATH, "//legend[text()='Switch To Alert Example']").text)
 
 
