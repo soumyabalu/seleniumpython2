@@ -16,14 +16,10 @@ driver.find_element(By.XPATH, "//input[@id='autocomplete']").send_keys("ind")
 time.sleep(10)
 countries = driver.find_elements(By.CSS_SELECTOR, "li[class='ui-menu-item']")
 print(len(countries))
-
 common.auto_sugesion("India", countries)
-
 print(driver.find_element(By.XPATH, "//input[@id='autocomplete']").get_attribute("value"))
 assert driver.find_element(By.XPATH, "//input[@id='autocomplete']").get_attribute("value") == "India"
-
 time.sleep(10)
-
 print(driver.find_element(By.XPATH, "//legend[text()='Dropdown Example']").text)
 dropdown = Select(driver.find_element(By.ID, "dropdown-class-example"))
 dropdown.select_by_value("option2")
@@ -33,17 +29,8 @@ time.sleep(10)
 print(driver.find_element(By.XPATH, "//legend[text()='Checkbox Example']").text)
 checkboxes = driver.find_elements(By.XPATH, "//input[@type='checkbox']")
 
-
-def check_box(option):
-    for checkbox in checkboxes:
-        if checkbox.get_attribute("value") == option:
-            checkbox.click()
-            assert checkbox.is_selected()
-            break
-
-
 time.sleep(10)
-check_box("option3")
+common.check_box("option3", checkboxes)
 
 print(driver.find_element(By.XPATH, "//legend[text()='Switch Window Example']").text)
 print(driver.find_element(By.XPATH, "//legend[text()='Element Displayed Example']").text)
@@ -55,16 +42,8 @@ time.sleep(10)
 driver.find_element(By.XPATH, "//input[@id='show-textbox']").click()
 assert driver.find_element(By.XPATH, "//input[@id='displayed-text']").is_displayed()  # used to check weather an
 # element is displayed in the wb page or not
-
 time.sleep(10)
-
 print(driver.find_element(By.XPATH, "//legend[text()='Switch To Alert Example']").text)
-
-
-def enter_value(name_enter):
-    driver.find_element(By.CSS_SELECTOR, "#name").send_keys(name_enter)
-    driver.find_element(By.XPATH, "//input[@value='Alert']").click()
-
-
-enter_value("Soumya")
+common.enter_value("soumya", driver)
+driver.find_element(By.XPATH, "//input[@value='Alert']").click()
 time.sleep(10)
